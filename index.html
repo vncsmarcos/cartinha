@@ -1,38 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Para: Thamires</title>
-
-  <!-- Fonte personalizada -->
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-
   <style>
-    body {
-      background-color: #f0e6f6;
+    /* RESET GERAL */
+    * {
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f0e6f6;
+      font-family: "Dancing Script", cursive;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
     }
 
     .envelope-wrapper {
-      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 40px;
-      box-sizing: border-box;
+      width: 100%;
     }
 
     #envelope {
       position: relative;
-      max-width: 90vw;
       width: 280px;
       height: 180px;
       background-color: #c32cde;
       border-radius: 0 0 6px 6px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
     }
 
     .front {
@@ -44,4 +49,250 @@
 
     .flap {
       border-left: 140px solid transparent;
-      border-right
+      border-right: 140px solid transparent;
+      border-bottom: 82px solid transparent;
+      border-top: 98px solid #70107b;
+      transform-origin: top;
+      pointer-events: none;
+    }
+
+    .pocket {
+      border-left: 140px solid #c32cde;
+      border-right: 140px solid #c32cde;
+      border-bottom: 90px solid #70107b;
+      border-top: 90px solid transparent;
+      border-radius: 0 0 6px 6px;
+    }
+
+    .letter {
+      position: relative;
+      background-color: #fff;
+      width: 90%;
+      height: 90%;
+      margin: 5% auto;
+      border-radius: 6px;
+      box-shadow: 0 2px 26px rgba(0, 0, 0, 0.12);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .words {
+      position: absolute;
+      width: 80%;
+      left: 10%;
+      background-color: #ffe6e6;
+      padding: 4px 6px;
+      border-radius: 4px;
+    }
+
+    .line1 { top: 10%; font-size: 0.9rem; }
+    .line2 { top: 30%; font-size: 1rem; }
+    .line3 { top: 50%; font-size: 1rem; }
+    .line4 { top: 70%; font-size: 1rem; }
+
+    /* Animações envelope */
+    .open .flap {
+      transform: rotateX(180deg);
+      transition: transform 0.4s ease, z-index 0.6s;
+      z-index: 1;
+    }
+
+    .close .flap {
+      transform: rotateX(0deg);
+      transition: transform 0.4s 0.6s ease, z-index 1s;
+      z-index: 5;
+    }
+
+    .open .letter {
+      transform: translateY(-100px);
+      transition: transform 0.4s 0.6s ease;
+      z-index: 2;
+    }
+
+    .close .letter {
+      transform: translateY(0);
+      transition: transform 0.4s ease;
+      z-index: 1;
+    }
+
+    .hearts {
+      position: absolute;
+      top: 90px;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: 0;
+      width: 50px;
+      height: 80px;
+    }
+
+    .heart:before,
+    .heart:after {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 80px;
+      background: #c32cde;
+      border-radius: 50px 50px 0 0;
+    }
+
+    .heart:before {
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+    }
+
+    .heart:after {
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+    }
+
+    .close .heart {
+      opacity: 0;
+    }
+
+    .a1, .a2, .a3 {
+      opacity: 1;
+      animation-fill-mode: forwards;
+      animation-delay: 0.7s;
+    }
+
+    .a1 {
+      left: 20%;
+      transform: scale(0.6);
+      animation: slideUp 4s linear 1, sideSway 2s ease-in-out 4 alternate;
+    }
+
+    .a2 {
+      left: 55%;
+      transform: scale(1);
+      animation: slideUp 5s linear 1, sideSway 4s ease-in-out 2 alternate;
+    }
+
+    .a3 {
+      left: 10%;
+      transform: scale(0.8);
+      animation: slideUp 7s linear 1, sideSway 2s ease-in-out 6 alternate;
+    }
+
+    @keyframes slideUp {
+      0% { top: 0; }
+      100% { top: -600px; }
+    }
+
+    @keyframes sideSway {
+      0% { margin-left: 0; }
+      100% { margin-left: 50px; }
+    }
+
+    .reset {
+      margin-top: 24px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .reset button {
+      font-weight: bold;
+      background: transparent;
+      border: 2px solid #c32cde;
+      border-radius: 4px;
+      color: #c32cde;
+      font-size: 14px;
+      text-transform: uppercase;
+      padding: 10px 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .reset button:hover {
+      background-color: #70107b;
+      color: #fff;
+    }
+
+    @media (max-width: 480px) {
+      #envelope {
+        width: 90vw;
+        height: auto;
+        padding-top: 56.25%;
+      }
+
+      .flap, .pocket {
+        border-left-width: 45vw;
+        border-right-width: 45vw;
+      }
+
+      .flap {
+        border-top-width: 35vw;
+      }
+
+      .pocket {
+        border-bottom-width: 30vw;
+      }
+
+      .letter {
+        height: 80%;
+        top: 10%;
+      }
+
+      .words {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="envelope-wrapper">
+    <div id="envelope" class="close" role="button" aria-label="Carta animada para Thamires">
+      <div class="front flap"></div>
+      <div class="front pocket"></div>
+      <div class="letter">
+        <div class="words line1">Thamires</div>
+        <div class="words line2">Você é muito especial para mim</div>
+        <div class="words line3">Eu te amo muito</div>
+        <div class="words line4">Com carinho</div>
+      </div>
+      <div class="hearts">
+        <div class="heart a1"></div>
+        <div class="heart a2"></div>
+        <div class="heart a3"></div>
+      </div>
+    </div>
+  </main>
+
+  <nav class="reset" aria-label="Controles de interação">
+    <button id="open" type="button">Abrir</button>
+    <button id="reset" type="button">Fechar</button>
+  </nav>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const envelope = document.getElementById("envelope");
+      const btnOpen = document.getElementById("open");
+      const btnReset = document.getElementById("reset");
+
+      const open = () => {
+        envelope.classList.add("open");
+        envelope.classList.remove("close");
+      };
+
+      const close = () => {
+        envelope.classList.add("close");
+        envelope.classList.remove("open");
+      };
+
+      envelope.addEventListener("click", open);
+      btnOpen.addEventListener("click", open);
+      btnReset.addEventListener("click", close);
+    });
+  </script>
+
+</body>
+</html>
