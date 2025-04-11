@@ -4,31 +4,16 @@
   <meta charset="UTF-8">
   <title>Para:Thamires</title>
   <style>
-    body {
-      background-color: #f0e6f6;
-      margin: 0;
-      padding: 0;
-    }
-
-    .envlope-wrapper {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-top: 40px;
-      padding-bottom: 40px;
-      box-sizing: border-box;
-    }
-
-    #envelope {
+    #envelope { 
       position: relative;
-      max-width: 90vw;
       width: 280px;
       height: 180px;
-      margin: 0 auto;
-      background-color: #c32cde;
       border-bottom-left-radius: 6px;
       border-bottom-right-radius: 6px;
+      margin-left: auto;
+      margin-right: auto;
+      top: 150px;
+      background-color: #c32cde;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
 
@@ -61,37 +46,56 @@
       position: relative;
       background-color: #fff;
       width: 90%;
+      margin-left: auto;
+      margin-right: auto;
       height: 90%;
-      margin: 5% auto;
+      top: 5%;
       border-radius: 6px;
       box-shadow: 0 2px 26px rgba(0, 0, 0, 0.12);
       font-family: "Dancing Script", cursive;
+    }
+
+    .letter:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
     }
 
     .words {
       position: absolute;
       left: 10%;
       width: 80%;
+      height: 14%;
       background-color: #ffe6e6;
     }
 
     .words.line1 {
       top: 10%;
-      font-size: 0.8rem;
-      height: 8%;
+      font-size: 0.7rem;
+      width: 20%;
+      height: 7%;
     }
 
-    .words.line2,
-    .words.line3,
-    .words.line4 {
-      font-size: 1rem;
+    .words.line2 {
+      top: 30%;
       text-align: center;
-      height: 14%;
+      font-size: 1.1rem;
     }
 
-    .words.line2 { top: 30%; }
-    .words.line3 { top: 50%; }
-    .words.line4 { top: 70%; }
+    .words.line3 {
+      top: 50%;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    .words.line4 {
+      top: 70%;
+      font-size: 1.1rem;
+      text-align: center;
+    }
 
     .open .flap {
       transform: rotateX(180deg);
@@ -134,14 +138,17 @@
 
     .heart:before,
     .heart:after {
-      content: "";
       position: absolute;
+      content: "";
+      left: 50px;
+      top: 0;
       width: 50px;
       height: 80px;
       background: #c32cde;
       border-radius: 50px 50px 0 0;
       transform: rotate(-45deg);
       transform-origin: 0 100%;
+      pointer-events: none;
     }
 
     .heart:after {
@@ -152,31 +159,35 @@
 
     .close .heart {
       opacity: 0;
+      -webkit-animation: none;
       animation: none;
-    }
-
-    .a1, .a2, .a3 {
-      opacity: 1;
-      animation-fill-mode: forwards;
-      animation-delay: 0.7s;
     }
 
     .a1 {
       left: 20%;
       transform: scale(0.6);
+      opacity: 1;
       animation: slideUp 4s linear 1, sideSway 2s ease-in-out 4 alternate;
+      animation-fill-mode: forwards;
+      animation-delay: 0.7s;
     }
 
     .a2 {
       left: 55%;
       transform: scale(1);
+      opacity: 1;
       animation: slideUp 5s linear 1, sideSway 4s ease-in-out 2 alternate;
+      animation-fill-mode: forwards;
+      animation-delay: 0.7s;
     }
 
     .a3 {
       left: 10%;
       transform: scale(0.8);
+      opacity: 1;
       animation: slideUp 7s linear 1, sideSway 2s ease-in-out 6 alternate;
+      animation-fill-mode: forwards;
+      animation-delay: 0.7s;
     }
 
     @keyframes slideUp {
@@ -189,9 +200,16 @@
       100% { margin-left: 50px; }
     }
 
+    body {
+      background-color: #f0e6f6;
+    }
+
+    .envlope-wrapper {
+      height: 380px;
+    }
+
     .reset {
       text-align: center;
-      margin-top: 20px;
     }
 
     .reset button {
@@ -212,38 +230,6 @@
       background-color: #70107b;
       color: #fff;
     }
-
-    @media (max-width: 480px) {
-      #envelope {
-        width: 90vw;
-        height: auto;
-        padding-top: 56.25%; /* Proporção para manter altura */
-      }
-
-      .flap, .pocket {
-        border-left-width: 45vw;
-        border-right-width: 45vw;
-      }
-
-      .flap {
-        border-top-width: 35vw;
-      }
-
-      .pocket {
-        border-bottom-width: 30vw;
-      }
-
-      .letter {
-        height: 80%;
-        top: 10%;
-      }
-
-      .words.line2,
-      .words.line3,
-      .words.line4 {
-        font-size: 0.9rem;
-      }
-    }
   </style>
 </head>
 <body>
@@ -257,7 +243,7 @@
         <div class="words line2">Você é muito especial para mim</div>
         <div class="words line3">Eu te amo muito</div>
         <div class="words line4">Com carinho</div>
-      </div>
+  </div>
       <div class="hearts">
         <div class="heart a1"></div>
         <div class="heart a2"></div>
